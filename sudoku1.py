@@ -10,6 +10,10 @@ class SudokuApp(clingo.application.Application):
         ctl.configuration.solve.models = '1'    # limit to one model
         ctl.ground()    # ground
         ctl.solve()     # solve
+    
+    def print_model(self, model, printer):
+        symbols = sorted(model.symbols(shown=True)) # get the shown symbols in a sorted list
+        print(" ".join(str(s) for s in symbols))    # print the symbols with spaces seprarating them on one line
 
 
 clingo.application.clingo_main(SudokuApp())
