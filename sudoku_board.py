@@ -9,6 +9,21 @@ class Sudoku:
     def __str__(self) -> str:
         s = ""
         # YOUR CODE HERE
+        for row in range(1, 10):
+            if row > 1:
+                # empty line before row 4 and row 7, newline otherwise
+                if (row - 1) % 3 == 0:
+                    s += "\n\n"
+                else:
+                    s += "\n"
+            for column in range(1, 10):
+                if column > 1:
+                    # two blank spaces before columns 4 and 7, one space otherwise
+                    if (column - 1) % 3 == 0:
+                        s += "  "
+                    else:
+                        s += " "
+                s += str(self.sudoku[(row, column)])
         return s
 
     @classmethod
